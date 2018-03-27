@@ -63,17 +63,19 @@ var a = "emergentes fb";
   // successful.  See statusChangeCallback() for when this call is made.
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me/friends', function(response) {
+    FB.api('/me', function(response) {
       console.log(response);
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
+        listaAmigos();
     });
   }
 
-  function listaAmigos(response){
-  	console.log("lista de amigos");
-  	for (var i = response.context.mutual_friends.data.length - 1; i >= 0; i--) {
-  		console.log(response.context.mutual_friends.data[i]);
-  	}
+  function listaAmigos(){
+  	FB.api('/me/friends', function(response) {
+      console.log(response);
+      console.log('Successful login for: ' + response.summary.total_count);
+     
+    });
   }
