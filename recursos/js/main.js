@@ -65,7 +65,6 @@ var a = "emergentes fb";
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me?fields=id,name,context,email', function(response) {
       console.log(response.context);
-      listaAmigos(response);
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
