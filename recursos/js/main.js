@@ -32,7 +32,6 @@ var a = "emergentes fb";
       xfbml      : true,  // parse social plugins on this page
       version    : 'v2.12' // use graph api version 2.8
     });
-
     // Now that we've initialized the JavaScript SDK, we call 
     // FB.getLoginStatus().  This function gets the state of the
     // person visiting this page and can return one of three states to
@@ -64,7 +63,7 @@ var a = "emergentes fb";
   // successful.  See statusChangeCallback() for when this call is made.
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
+    FB.api('/me?fields=id,name,context', function(response) {
       console.log(response);
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
