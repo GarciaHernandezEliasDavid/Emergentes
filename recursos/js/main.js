@@ -64,9 +64,17 @@ var a = "emergentes fb";
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me?fields=id,name,context', function(response) {
-      console.log(response);
+      console.log(response.context);
+      listaAmigos(response);
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
     });
+  }
+
+  function listaAmigos(response){
+  	console.log("lista de amigos");
+  	for (var i = response.context.mutual_friends.data.length - 1; i >= 0; i--) {
+  		console.log(response.context.mutual_friends.data[i]);
+  	}
   }
